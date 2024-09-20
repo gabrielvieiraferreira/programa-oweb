@@ -1,13 +1,30 @@
-function Idade() {
-    var ano, idade, mensagem;
-    ano = document.getElementById("anoquenasceu?").value;
-    idade = 2024 - ano;
+function calcularSalario() {
     
-    if (idade >= 18) {
-        mensagem = "Você tem " + idade + " anos. Você é maior de idade.";
-    } else {
-        mensagem = "Você tem " + idade + " anos. Você é menor de idade.";
+    let salarioBase = parseFloat(document.getElementById("salario").value);
+    let cargo = document.getElementById("cargo").value;
+    let aumento;
+    let percentual;
+
+    
+    switch (cargo) {
+        case "diretor":
+            percentual = 0.10; 
+            break;
+        case "secretario":
+            percentual = 0.20; 
+            break;
+        case "operador":
+            percentual = 0.30;
+            break;
+        default:
+            percentual = 0;
     }
 
-    document.getElementById("resultado").innerHTML = mensagem;
+    
+    aumento = salarioBase * percentual;
+    let salarioAtualizado = salarioBase + aumento;
+
+    
+    document.getElementById("resultado").innerHTML = 
+        `O novo salário é R$${salarioAtualizado.toFixed(2)} com um aumento de ${percentual * 100}%`;
 }
